@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <h2>🏡 Amma's Naturals</h2>
+</nav>
+
+<section class="contact-section">
+
+    <div class="contact-header">
+        <h1>📞 Contact Us</h1>
+        <p>We'd love to hear from you. Get in touch for orders, product details, or any questions.</p>
+    </div>
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+
+            <div class="contact-card">
+                <h3>📱 Phone</h3>
+                <p>+91 9843828490</p>
+            </div>
+
+            <div class="contact-card">
+                <h3>📧 Email</h3>
+                <p>ammaskitchen40@gmail.com</p>
+            </div>
+
+            <div class="contact-card">
+                <h3>💬 WhatsApp</h3>
+                <a href="https://wa.me/919843828490" target="_blank">
+                    <button type="button">Chat Now</button>
+                </a>
+            </div>
+
+            <div class="contact-card">
+                <h3>📍 Location</h3>
+                <p>Thoothukudi, Tamil Nadu, India</p>
+            </div>
+
+        </div>
+
+        <!-- FORM -->
+        <div class="contact-form-card">
+
+            <h2>Send Message</h2>
+
+            <form onsubmit="sendWhatsApp(event)">
+
+                <input type="text" id="name" placeholder="Your Name" required>
+
+                <input type="email" id="email" placeholder="Your Email" required>
+
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+
+                <input type="text" id="address" placeholder="Your Address" required>
+
+                <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+
+                <button type="submit">Send Message</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="back-btn">
+        <a href="index.html">
+            <button type="button">⬅ Back to Home</button>
+        </a>
+    </div>
+
+</section>
+
+<footer>
+    <h3>🏡 Amma's Naturals</h3>
+    <p>📧 ammaskitchen40@gmail.com</p>
+    <p>📞 +91 9843828490</p>
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="products.html">Products</a> |
+        <a href="about.html">About</a> |
+        <a href="contact.html">Contact</a>
+    </p>
+
+    <p>© 2026 All Rights Reserved</p>
+</footer>
+
+<script>
+function sendWhatsApp(event){
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+    let message = document.getElementById("message").value;
+
+    let text = 
+`📩 New Contact Form Message
+
+👤 Name: ${name}
+📧 Email: ${email}
+📱 Phone: ${phone}
+🏠 Address: ${address}
+
+💬 Message:
+${message}`;
+
+    let whatsappURL = "https://wa.me/919843828490?text=" + encodeURIComponent(text);
+
+    window.open(whatsappURL, "_blank");
+
+    // optional reset
+    document.querySelector("form").reset();
+}
+</script>
+
+</body>
+</html>

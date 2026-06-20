@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <h2>Amma's Naturals</h2>
+    </nav>
+
+    <section class="products">
+        <h1>🧾 Checkout</h1>
+
+        <form onsubmit="placeOrder(event)">
+
+            <input type="text" id="name" placeholder="Your Name" required>
+            <br><br>
+
+            <input type="text" id="address" placeholder="Address" required>
+            <br><br>
+
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <br><br>
+
+            <h3 id="orderTotal">Total: ₹0</h3>
+
+            <div class="shipping-details">
+
+    <h2>🚚 Shipping Information</h2>
+
+    <p>📦 Orders are packed fresh and shipped within 1-2 business days.</p>
+
+    <p>🚚 Delivery Time: 3-7 working days.</p>
+
+    <p>💰 Shipping Charge: ₹50 for orders below ₹999.</p>
+
+    <p>🎉 Free Shipping on orders above ₹999.</p>
+
+</div>
+
+            <div class="payment-box">
+
+                <h2>💳 Scan & Pay</h2>
+
+                <img src="images/payment-qr.png"
+                alt="Payment QR"width="250">
+
+                <p>Scan using GPay, PhonePe or Paytm</p>
+
+                <p><b>After payment, send screenshot on WhatsApp.</b></p>
+
+            </div>
+
+            <button type="submit">Place Order on WhatsApp</button>
+
+        </form>
+
+        <br>
+
+        <a href="cart.html">
+            <button>⬅ Back to Cart</button>
+        </a>
+
+    </section>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let total = 0;
+cart.forEach(item => total += item.price);
+
+let shipping = 0;
+
+if(total < 500){
+    shipping = 50;
+}
+
+let finalTotal = total + shipping;
+
+document.getElementById("orderTotal").innerHTML =
+`
+Subtotal: ₹${total}<br>
+Shipping: ₹${shipping}<br>
+<b>Total: ₹${finalTotal}</b>
+`;
+
+function placeOrder(event) {
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let address = document.getElementById("address").value;
+    let phone = document.getElementById("phone").value;
+
+    let orderText = "🛒 New Order\n\n";
+    orderText += "Name: " + name + "\n";
+    orderText += "Phone: " + phone + "\n";
+    orderText += "Address: " + address + "\n\n";
+    orderText += "Products:\n";
+
+    cart.forEach(item => {
+        orderText += "- " + item.name + " ₹" + item.price + "\n";
+    });
+
+    orderText += "\nTotal: ₹" + total;
+
+    let whatsappURL =
+        "https://wa.me/919843828490?text=" +
+        encodeURIComponent(orderText);
+
+    window.open(whatsappURL, "_blank");
+
+    localStorage.removeItem("cart");
+}
+</script>
+
+</body>
+</html>

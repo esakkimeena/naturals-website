@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Soap</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <h2>🏡 Amma's Naturals</h2>
+</nav>
+
+<div class="product-page">
+
+    <div class="product-image">
+        <img src="images/sandalwood-soap.jpg" alt="Sandalwood Soap">
+    </div>
+
+    <div class="product-content">
+
+        <h1> Sandalwood Soap (100g)</h1>
+
+        <div class="rating">
+            ⭐⭐⭐⭐⭐ <span>(27 Reviews)</span>
+        </div>
+
+        <div class="price">
+            ₹120 <span class="old-price">₹190</span>
+        </div>
+
+        <p class="shipping">🚚 Shipping calculated at checkout</p>
+
+        <div class="quantity">
+            <button onclick="decreaseQty()">−</button>
+            <span id="qty">1</span>
+            <button onclick="increaseQty()">+</button>
+        </div>
+
+        <div class="buttons">
+            <button class="cart-btn"
+                onclick="addToCart('Sandalwood Soap',120)">
+                Add to Cart
+            </button>
+
+            <button class="buy-btn"
+                onclick="buyNow('Sandalwood Soap',120)">
+                Buy Now
+            </button>
+        </div>
+
+        <div class="delivery-box">
+            <p>🚚 Reliable Shipping</p>
+        </div>
+
+        <div class="info-box">
+    <h3>🌹 What Is Sandalwood Soap?</h3>
+    <p>
+        Sandalwood Soap is a cleansing bar infused with sandalwood extracts, oils,
+        petals, or sandalwoodwater. It cleanses, nourishes, soothes, and refreshes
+        the skin with natural floral goodness. Unlike ordinary soaps,
+        quality sandalwood soaps use natural ingredients and avoid harsh chemicals,
+        making them gentle on the skin.
+    </p>
+</div>
+
+<div class="info-box">
+    <h3>🌿 Key Ingredients & Their Roles</h3>
+    <ul>
+        <li><b>Sandalwood Extract / Sandalwood Oil / Sandalwoodwater</b> – Soothes and balances skin tone.</li>
+        <li><b>Natural Oils</b> (Coconut, Olive, Almond) – Deep moisturization.</li>
+        <li><b>Aloe Vera, Honey, Glycerin</b> – Hydrates and protects skin.</li>
+        <li><b>Vitamin E & Antioxidants</b> – Supports skin repair and glow.</li>
+    </ul>
+</div>
+
+<div class="info-box">
+    <h3>✨ Major Benefits</h3>
+    <ul>
+        <li>🌼 Gentle but effective cleansing</li>
+        <li>💧 Deep hydration and moisture lock</li>
+        <li>🌸 Soothes irritation and redness</li>
+        <li>✨ Brightens skin and supports renewal</li>
+        <li>🌿 Natural floral fragrance for relaxation</li>
+        <li>🧴 Suitable for most skin types</li>
+    </ul>
+</div>
+
+<div class="info-box">
+    <h3>🛁 How To Use</h3>
+    <ol>
+        <li>Wet your skin with water.</li>
+        <li>Lather the soap in your hands or loofah.</li>
+        <li>Massage gently in circular motions.</li>
+        <li>Rinse thoroughly with clean water.</li>
+        <li>Pat dry with a soft towel.</li>
+        <li>Use daily for best results.</li>
+    </ol>
+</div>
+
+<div class="info-box">
+    <h3>🎁 Perfect For</h3>
+    <ul>
+        <li>Daily skincare routine</li>
+        <li>Premium gifting</li>
+        <li>Wedding & festival return gifts</li>
+        <li>Self-care and aromatherapy lovers</li>
+    </ul>
+</div>
+
+    </div>
+
+</div>
+
+<section class="reviews-section">
+
+    <h2>⭐ Customer Reviews</h2>
+
+<div class="review-container">
+
+
+    <div class="review-card">
+        <p>⭐⭐⭐⭐⭐</p>
+        <p>"Amazing fragrance and very gentle on skin."</p>
+        <strong>- Priya</strong>
+    </div>
+
+    <div class="review-card">
+        <p>⭐⭐⭐⭐⭐</p>
+        <p>"My skin feels softer after using this soap."</p>
+        <strong>- Anitha</strong>
+    </div>
+
+     </div>
+            <div id="newReviews"></div>
+
+
+    </div>
+
+    <h2 style="text-align:center;">✍️ Write Your Review</h2>
+
+    <div class="review-form">
+
+        <input type="text" id="reviewName" placeholder="Your Name">
+
+        <textarea id="reviewText" placeholder="Write your review"></textarea>
+
+        <button onclick="addReview()">Submit Review</button>
+
+    </div>
+
+</section>
+
+</div>
+</section>
+
+<div class="back-home">
+    <a href="soaps.html">
+        <button>⬅ Back to Soaps</button>
+    </a>
+</div>
+
+<script src="js/script.js"></script>
+
+<script>
+let quantity = 1;
+
+function increaseQty(){
+    quantity++;
+    document.getElementById("qty").innerText = quantity;
+}
+
+function decreaseQty(){
+    if(quantity > 1){
+        quantity--;
+        document.getElementById("qty").innerText = quantity;
+    }
+}
+</script>
+
+</body>
+</html>

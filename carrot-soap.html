@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Soap</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <h2>🏡 Amma's Naturals</h2>
+</nav>
+
+<div class="product-page">
+
+    <div class="product-image">
+        <img src="images/carrot-soap.jpg" alt="Carrot Soap">
+    </div>
+
+    <div class="product-content">
+
+        <h1> Carrot Soap</h1>
+
+        <div class="rating">
+            ⭐⭐⭐⭐⭐ <span>(27 Reviews)</span>
+        </div>
+
+        <div class="price">
+            ₹60 <span class="old-price">₹150</span>
+        </div>
+
+        <p class="shipping">🚚 Shipping calculated at checkout</p>
+
+
+        <div class="quantity">
+            <button onclick="decreaseQty()">−</button>
+            <span id="qty">1</span>
+            <button onclick="increaseQty()">+</button>
+        </div>
+
+        <div class="buttons">
+            <button class="cart-btn"
+                onclick="addToCart('Carrot Soap',60)">
+                Add to Cart
+            </button>
+
+            <button class="buy-btn"
+                onclick="buyNow('Carrot Soap',60)">
+                Buy Now
+            </button>
+        </div>
+
+        <div class="delivery-box">
+            <p>🚚 Reliable Shipping</p>
+    
+        </div>
+
+        <div class="info-box">
+    <h3>❤️ What Is Carrot Soap?</h3>
+    <p>
+        Carrot Soap is a natural skincare soap enriched with carrot extract,
+        known for its skin-brightening and nourishing properties. It helps cleanse
+        the skin gently while providing essential nutrients that promote a healthy,
+        glowing complexion.
+    </p>
+</div>
+
+<div class="info-box">
+    <h3>🌿 Ingredients</h3>
+    <ul>
+        <li>Carrot Extract</li>
+        <li>Coconut Oil</li>
+        <li>Glycerin</li>
+        <li>Vitamin E</li>
+        <li>Essential Oils</li>
+    </ul>
+</div>
+
+<div class="info-box">
+    <h3>✨ Benefits</h3>
+    <ul>
+        <li>Natural Skin Brightening</li>
+        <li>Rich In Antioxidants</li>
+        <li>Helps Improve Skin Glow</li>
+        <li>Deep Cleansing</li>
+        <li>Suitable For All Skin Types</li>
+    </ul>
+</div>
+
+<div class="info-box">
+    <h3>🛠️ How We Make It</h3>
+    <p>
+        We carefully blend pure carrot extract with nourishing oils and
+        natural ingredients. The mixture is poured into molds and cured
+        naturally to create a gentle, skin-friendly soap.
+    </p>
+</div>
+
+<div class="info-box">
+    <h3>🌸 Key Ingredients & Their Roles</h3>
+    <ul>
+        <li><b>Carrot Extract</b> – Helps brighten and rejuvenate skin.</li>
+        <li><b>Coconut Oil</b> – Moisturizes and softens skin.</li>
+        <li><b>Glycerin</b> – Locks in moisture and prevents dryness.</li>
+        <li><b>Vitamin E</b> – Supports skin repair and protection.</li>
+        <li><b>Essential Oils</b> – Provide a refreshing fragrance.</li>
+    </ul>
+</div>
+
+<div class="info-box">
+    <h3>🛁 How To Use</h3>
+    <ol>
+        <li>Wet your skin with water.</li>
+        <li>Apply the soap and create a rich lather.</li>
+        <li>Massage gently in circular motions.</li>
+        <li>Rinse thoroughly with clean water.</li>
+        <li>Pat dry with a soft towel.</li>
+        <li>Use daily for healthy, glowing skin.</li>
+    </ol>
+</div>
+
+<div class="info-box">
+    <h3>🎁 Perfect For</h3>
+    <ul>
+        <li>Daily Skincare Routine</li>
+        <li>Skin Brightening Care</li>
+        <li>Natural Beauty Enthusiasts</li>
+        <li>Premium Gifts & Return Gifts</li>
+    </ul>
+</div>
+
+<section class="reviews-section">
+
+    <h2>⭐ Customer Reviews</h2>
+
+    <div class="review-container">
+
+        <div class="review-card">
+            <p>⭐⭐⭐⭐⭐</p>
+            <p>"Amazing fragrance and very gentle on skin."</p>
+            <strong>- Priya</strong>
+        </div>
+
+        <div class="review-card">
+            <p>⭐⭐⭐⭐⭐</p>
+            <p>"My skin feels softer after using this soap."</p>
+            <strong>- Anitha</strong>
+        </div>
+            <div id="newReviews"></div>
+
+
+    </div>
+
+    <h2 style="text-align:center;">✍️ Write Your Review</h2>
+
+    <div class="review-form">
+
+        <input type="text" id="reviewName" placeholder="Your Name">
+
+        <textarea id="reviewText" placeholder="Write your review"></textarea>
+
+        <button onclick="addReview()">Submit Review</button>
+
+    </div>
+
+</section>
+
+<div class="back-home">
+    <a href="soaps.html">
+        <button>⬅ Back to Soaps</button>
+    </a>
+</div>
+
+<script src="js/script.js"></script>
+
+<script>
+let quantity = 1;
+
+function increaseQty(){
+    quantity++;
+    document.getElementById("qty").innerText = quantity;
+}
+
+function decreaseQty(){
+    if(quantity > 1){
+        quantity--;
+        document.getElementById("qty").innerText = quantity;
+    }
+}
+</script>
+
+<script>
+function addReview(){
+
+    let name = document.getElementById("reviewName").value;
+    let review = document.getElementById("reviewText").value;
+
+    if(name === "" || review === ""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let reviews =
+    JSON.parse(localStorage.getItem("reviews")) || [];
+
+    reviews.push({
+        name:name,
+        review:review
+    });
+
+    localStorage.setItem(
+        "reviews",
+        JSON.stringify(reviews)
+    );
+
+    loadReviews();
+
+    document.getElementById("reviewName").value="";
+    document.getElementById("reviewText").value="";
+}
+
+function loadReviews(){
+
+    let reviews =
+    JSON.parse(localStorage.getItem("reviews")) || [];
+
+    let output = "";
+
+    reviews.forEach(r => {
+
+        output += `
+        <div class="review-card">
+            <p>⭐⭐⭐⭐⭐</p>
+            <p>"${r.review}"</p>
+            <strong>- ${r.name}</strong>
+        </div>
+        `;
+    });
+
+    document.getElementById("newReviews").innerHTML = output;
+}
+
+loadReviews();
+</script>
+
+</body>
+</html>

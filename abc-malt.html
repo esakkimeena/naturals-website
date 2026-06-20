@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Malt</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <h2>🏡 Amma's Naturals</h2>
+</nav>
+
+<div class="product-page">
+
+    <div class="product-image">
+        <img src="images/abc-malt.jpg" alt="ABC Malt">
+    </div>
+
+    <div class="product-content">
+
+        <h1> ABC Malt(150g)</h1>
+
+        <div class="rating">
+            ⭐⭐⭐⭐⭐ <span>(27 Reviews)</span>
+        </div>
+
+        <div class="price">
+            ₹325 <span class="old-price">₹400</span>
+        </div>
+
+        <p class="shipping">🚚 Shipping calculated at checkout</p>
+
+
+        <div class="quantity">
+            <button onclick="decreaseQty()">−</button>
+            <span id="qty">1</span>
+            <button onclick="increaseQty()">+</button>
+        </div>
+
+        <div class="buttons">
+            <button class="cart-btn"
+                onclick="addToCart('ABC Malt',325)">
+                Add to Cart
+            </button>
+
+            <button class="buy-btn"
+                onclick="buyNow('ABC Malt',325)">
+                Buy Now
+            </button>
+        </div>
+
+        <div class="delivery-box">
+            <p>🚚 Reliable Shipping</p>
+    
+        </div>
+
+<div class="info-box">
+    <h3>🥜 What Is ABC Malt?</h3>
+    <p>
+        ABC Malt is a nutritious traditional drink made from
+        premium malted grains, dates, raisins, apple, beetroot, carrot. It provides
+        natural energy and is a healthier alternative to processed snacks.
+    </p>
+</div>
+
+<div class="info-box">
+    <h3>🌿 Key Ingredients & Their Roles</h3>
+    <ul>
+        <li><b>Almonds</b> – Rich in protein and healthy fats.</li>
+        <li><b>Cashews</b> – Adds creaminess and essential nutrients.</li>
+        <li><b>Pistachios</b> – Rich in antioxidants.</li>
+        <li><b>Apple</b> – Provides vitamins and fiber.</li>
+        <li><b>Beetroot</b> – Rich in nitrates and antioxidants.</li>
+        <li><b>Carrot</b> – Provides beta-carotene and fiber.</li>
+        <li><b>Raisins</b> – Supports digestion and adds sweetness.</li>
+        <li><b>Pure Ghee</b> – Enhances taste and nutrition.</li>
+    </ul>
+</div>
+
+<div class="info-box">
+    <h3>💪 Major Benefits</h3>
+    <ul>
+        <li>⚡ Instant Energy Boost</li>
+        <li>🥜 Rich In Protein & Healthy Fats</li>
+        <li>🛡️ Supports Immunity</li>
+        <li>❤️ Heart-Friendly Nutrients</li>
+        <li>🌟 Healthy Alternative To Sweets</li>
+    </ul>
+
+<h3>🛠️ How We Make It</h3>
+<p>
+    We carefully select premium dry fruits, roast them lightly,adding apple, beetroot
+    and carrot, then blend them with dates and pure ghee, then hand-roll them into
+    delicious laddus without artificial preservatives.
+</p>
+</div>
+
+<div class="info-box">
+    <h3>🍽️ How To Enjoy</h3>
+    <ol>
+        <li>Add 1-2 spoons to a glass of milk or water.</li>
+        <li>Best as a healthy drink.</li>
+        <li>Can be enjoyed with milk.</li>
+        <li>Perfect before or after workouts.</li>
+    </ol>
+</div>
+
+<div class="info-box">
+    <h3>🎁 Perfect For</h3>
+    <ul>
+        <li>Healthy Drinking</li>
+        <li>Kids & Adults</li>
+        <li>Festival Gifts</li>
+        <li>Fitness Enthusiasts</li>
+        <li>Daily Nutrition Support</li>
+    </ul>
+</div>
+
+<section class="reviews-section">
+
+    <h2>⭐ Customer Reviews</h2>
+
+    <div class="review-container">
+
+        <div class="review-card">
+            <p>⭐⭐⭐⭐⭐</p>
+            <p>"Amazing fragrance and very gentle on skin."</p>
+            <strong>- Priya</strong>
+        </div>
+
+        <div class="review-card">
+            <p>⭐⭐⭐⭐⭐</p>
+            <p>"My skin feels softer after using this soap."</p>
+            <strong>- Anitha</strong>
+        </div>
+            <div id="newReviews"></div>
+
+
+    </div>
+
+    <h2 style="text-align:center;">✍️ Write Your Review</h2>
+
+    <div class="review-form">
+
+        <input type="text" id="reviewName" placeholder="Your Name">
+
+        <textarea id="reviewText" placeholder="Write your review"></textarea>
+
+        <button onclick="addReview()">Submit Review</button>
+
+    </div>
+
+</section>
+
+<div class="back-home">
+    <a href="protein.html">
+        <button>⬅ Back to protein powder</button>
+    </a>
+</div>
+
+<script src="js/script.js"></script>
+
+<script>
+let quantity = 1;
+
+function increaseQty(){
+    quantity++;
+    document.getElementById("qty").innerText = quantity;
+}
+
+function decreaseQty(){
+    if(quantity > 1){
+        quantity--;
+        document.getElementById("qty").innerText = quantity;
+    }
+}
+</script>
+
+<script>
+function addReview(){
+
+    let name = document.getElementById("reviewName").value;
+    let review = document.getElementById("reviewText").value;
+
+    if(name === "" || review === ""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let reviews =
+    JSON.parse(localStorage.getItem("reviews")) || [];
+
+    reviews.push({
+        name:name,
+        review:review
+    });
+
+    localStorage.setItem(
+        "reviews",
+        JSON.stringify(reviews)
+    );
+
+    loadReviews();
+
+    document.getElementById("reviewName").value="";
+    document.getElementById("reviewText").value="";
+}
+
+function loadReviews(){
+
+    let reviews =
+    JSON.parse(localStorage.getItem("reviews")) || [];
+
+    let output = "";
+
+    reviews.forEach(r => {
+
+        output += `
+        <div class="review-card">
+            <p>⭐⭐⭐⭐⭐</p>
+            <p>"${r.review}"</p>
+            <strong>- ${r.name}</strong>
+        </div>
+        `;
+    });
+
+    document.getElementById("newReviews").innerHTML = output;
+}
+
+loadReviews();
+</script>
+
+</body>
+</html>
